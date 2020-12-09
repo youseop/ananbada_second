@@ -37,7 +37,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV="C:\Users\stkan\Desktop\pycha\anabada\venv"
+=======
+VIRTUAL_ENV="C:\Users\stkan\Desktop\anabada\venv"
+>>>>>>> 7a58d55f9832b81f6586b41cfb68a57240bbae65
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

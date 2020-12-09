@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div id="modal-container"></div>
+<div id="register-button-box" class="form-post p-3 mt-5" style="display: none;" >
+    <div
+      onclick="shareToggle('btn-share', 'btn-need', 'register-button-box', true)"
+      id="btn-share"
+      type="button"
+      class="btn btn-primary"
+      style="margin-right: 10px;">
+      빌리기
+    </div>
+    <div
+      onclick="shareToggle('btn-need', 'btn-share', 'register-button-box', true)"
+      id="btn-need"
+      type="button"
+      class="btn btn-primary">
+      빌려주기
+    </div>
+</div>
+<input type="text" id="shareOrNeed" style="display: none">
+<div id="cards-box">
+  <div class="card">
+    item
+  </div>
+</div>
+<script>
+    $(document).ready(function(){
+        console.log("do")
+        shareToggle('btn-need', 'btn-share', 'register-button-box', true);
+    })
+</script>
+{% endblock %}

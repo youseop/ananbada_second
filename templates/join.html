@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{%  block content %}
+{% if flash %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{ flash }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+<div class="p-3 mt-5 w-50 mx-auto">
+    <h1>회원가입</h1>
+    <form action="/join" method="post" class="row g-3">
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail4", name="userId" required>
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Password</label>
+        <input type="password" class="form-control" id="inputPassword4" name="userPwd" required>
+      </div>
+      <div class="col-md-6">
+        <label for="inputNickname" class="form-label">별명</label>
+        <input type="text" class="form-control" id="inputNickname" name="userNickname" required>
+      </div>
+      <div class="col-12">
+          <button onclick="findAddress(event)">주소 찾기</button>
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" id="inputAddress" name="userAddress" required="required" onkeydown="return false;" onkeypress="return false;" style="caret-color: transparent !important;" autocomplete="off">
+      </div>
+      <div class="col-md-4">
+        <label for="inputSex" class="form-label">성별</label>
+        <select id="inputSex" class="form-select" name="userSex">
+          <option selected>남자</option>
+          <option>여자</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">회원가입</button>
+      </div>
+    </form>
+</div>
+<script>
+</script>
+{% endblock %}

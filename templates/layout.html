@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+
+        <!-- emoji -->
+        <script src="https://kit.fontawesome.com/3389d23450.js" crossorigin="anonymous"></script>
+        <!-- 구글폰트 -->
+
+
+        <title>아나바다</title>
+        <!-- style -->
+        <style type="text/css">
+            * {
+                font-family: "Stylish", sans-serif;
+                box-sizing: border-box;
+            }
+
+            .card {
+                cursor: pointer;
+            }
+        </style>
+        <!-- script -->
+        <script>
+            $(document).ready(function () {
+                $("#cards-box").html("");
+                if(location.pathname == '/'){
+                    showItems();
+                } else if(location.pathname == '/need'){
+                    // showItems();
+                }
+            });
+
+            function uploadImgPreview() {
+                // @breif 업로드 파일 읽기
+                let fineInfo = "";
+                if ($("#shareYes").css("display") == "block") {
+                    fileInfo = document.getElementById("upImgFile_shareYES").files[0];
+                } else{
+                    fileInfo = document.getElementById("upImgFile_shareNO").files[0];
+                }
+                let reader = new FileReader();
+                // @details readAsDataURL( )을 통해 파일을 읽어 들일때 onload가 실행
+                reader.onload = function() {
+                // @details 파일의 URL을 Base64 형태로 가져온다.
+                if ($("#shareYes").css("display") == "block") {
+                    document.getElementById("thumbnailImg_shareYES").src = reader.result;
+                    document.getElementById("thumbnailUrl_shareYES").innerText = reader.result;
+                } else{
+                    document.getElementById("thumbnailImg_shareNO").src = reader.result;
+                    document.getElementById("thumbnailUrl_shareNO").innerText = reader.result;
+                }
+
+                
+                };
+                if( fileInfo ) {
+                    // @details readAsDataURL( )을 통해 파일의 URL을 읽어온다.
+                    reader.readAsDataURL( fileInfo );
+                }
+            }
+
+            function postComment(id){
+                
+                let comment = $(`#input_${id}`).val();
+                $.ajax({
+                    type:"POST",
+                    url: "/comment", 
+                    data: {
+                        id_received: id,
+                        comment: comment,
+                        createdAt: new Date()
+                    }, 
+                    success: function (response) {
+                        return
+                    }
+                })
+            }
+
+
+            function shareToggle(selected_id, another_id, box_id, show){
+                let is_share = 1;
+                $(`#${selected_id}`).css("transform",`scale(1.2)`);
+                $(`#${selected_id}`).css("transition", "all ease 1s");
+                if(selected_id === "btn-share"){
+                    $("#shareOrNeed").val(false);
+                    $("#register-title").text("빌려주세요!")
+                }else{
+                    $("#shareOrNeed").val(true);
+                    $("#register-title").text("빌려줄게요!")
+                    is_share = 0;
+                }
+                $(`#${another_id}`).css("transform",`none`);
+                $(`#${box_id}`).css("transform",`translate(${is_share*10}px, -25px`);
+                $(`#${box_id}`).css("transition", "all ease 1s");
+                $(`#${box_id}`).css("display",`block`);
+                if(show){
+                    showItems(is_share);
+                }
+            }
+
+            function showItems(isShare) {
+                $("#cards-box").empty();
+                $.ajax({
+                    url: "/get_item",
+                    type: "POST",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(isShare),
+                    success: function(response){
+                        let items = response["items"];
+                        for (let i = 0; i < items.length; i++) {
+                            makeCard(
+                                items[i]["_id"],
+                                items[i]["title"], 
+                                items[i]["description"], 
+                                items[i]['createdAt'],
+                                items[i]['imgUrl'],
+                                items[i]['user_nickname']);
+                        }
+                    }
+                })  
+            }
+
+            function showComment(id){
+                $.ajax({
+                    url: "/api/getCommentInfo",
+                    type: "post",
+                    data: {id},
+                    success: function(response){
+                        $(`#comment-list_${id}`).empty()
+                        $(`#input_${id}`).val("")
+                        let lis = "";
+                        for (let i = 0; i < response.length; i++) {
+                            const comment = response[i];
+                            const commentContainer = `<div id="${comment.id}">
+                                                        <h6>${comment.written_by}: ${comment.comment}</h6>
+                                                        <h6>${comment.createdAt}</h6></div>
+                                                        `
+                            lis += commentContainer;
+                        }
+                        console.log(lis)
+                        $(`#comment-list_${id}`).append(lis);
+                    }
+                })
+            }
+
+            function defModal(imgUrl, title, description, user_nickname, created_at, distance, post_id, comments){
+                $.ajax({
+                    url: "api/getCommentInfo",
+                    type: "post",
+                    data: {id:post_id},
+                    success: function (response) {
+                        let lis = "";
+                        for (let i = 0; i < response.length; i++) {
+                            const comment = response[i];
+                            const commentContainer = `<div id="${comment.id}">
+                                                        <h6>${comment.written_by}: ${comment.comment}</h6>
+                                                        <h6>${comment.createdAt}</h6></div>
+                                                        `
+                            lis += commentContainer;
+                        }
+                        let modal = `<div class="modal" id="itemModal" style="display: block;">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="itemTitle">${title}</h5>
+                                    <button type="button" onclick="deleteModal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close">❌</button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="${imgUrl}" alt="대표사진" width="50px">
+                                            <div>
+                                                <h2>${description}</h2>
+                                                <h3>${user_nickname}</h3>
+                                                <span>
+                                                    <span>${created_at}</span>
+                                                    <span>${distance}</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <input id="input_${post_id}" type="text" name="query" >
+                                            <div id="comment-list_${post_id}" style="overflow: scroll; max-height: 70vh;">${lis}</div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>`;
+                        $("#modal-container").append(modal)
+                        $(`#input_${post_id}`).keydown(function (key) {
+                            if (key.keyCode == 13 && $(`#input_${post_id}`).val() !== "") {
+                                postComment(post_id);
+                                showComment(post_id);
+                            }
+                        })
+                    }
+                })
+            }
+
+            function postModal(itemId){
+                let comments = [];
+                $.ajax({
+                    url: "/api/getItem",
+                    type: "post",
+                    data: { itemId },
+                    success: function(response){
+                        defModal(
+                            response.imgUrl,
+                            response.title,
+                            response.description,
+                            response.user_nickname,
+                            response.createdAt,
+                            response.distance,
+                            response._id,
+                            response.comments
+                        )
+                    }
+                })
+            }
+
+
+            function makeCard(id,title, description, createdAt, imgUrl,user_nickname) {
+                let tempHtml = `<div class="card" id="${id}">
+                                  <div class="card-body" onclick="postModal('${id}');">
+                                    <div>user: ${user_nickname}</div>
+                                    <h1 class="card-title">${user_nickname}</h1>
+                                    <p class="card-text comment">${description}</p>
+                                    <div>${createdAt}</div>
+                                    <img src="${imgUrl}" alt="" width="100">
+                                    <a href="#" onclick="deleteArticle(${id});">
+                                      삭제
+                                    </a>
+                                  </div>
+                                </div>`;
+                $("#cards-box").append(tempHtml);
+            }
+
+            function deleteArticle(id) {
+                $.ajax({
+                    type: "POST",
+                    url: "/delete",
+                    data: {'id_give': id},
+                    success: function (response) {
+                        if (response['result'] == 'success') {
+                            // 2. '삭제 완료! 안녕!' 얼럿을 띄웁니다.
+                            alert('Deleted')
+                            // 3. 변경된 정보를 반영하기 위해 새로고침합니다.
+                            window.location.reload()
+                        } else{
+                            alert('error')
+                        }
+                    }
+                });
+            }
+
+
+        </script>
+        <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script>
+            function findAddress(e){
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        let address = data.roadAddress;
+                        const parent = e.target.parentNode;
+                        const inputForm = parent.childNodes[5]
+                        inputForm.value = address;
+                    }
+                }).open();
+
+                e = e || window.event;
+                e.preventDefault()
+            }
+        </script>
+        <script>
+            function deleteModal(){
+                $('#itemModal').empty();
+
+                $('#itemModal').remove();
+            }
+        </script>
+    </head>
+
+  <body>
+    <!-- Navigation Menu -->
+    {% include "partials/nav.html" %}
+	<!-- 다른 html 코드가 들어가는 공간 -->
+    {% block content %}
+    {% endblock %}
+    {% block jsCode %}
+    {% endblock %}
+  </body>
+</html>

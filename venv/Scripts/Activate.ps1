@@ -27,7 +27,11 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
+<<<<<<< HEAD
 $env:VIRTUAL_ENV="C:\Users\stkan\Desktop\pycha\anabada\venv"
+=======
+$env:VIRTUAL_ENV="C:\Users\stkan\Desktop\anabada\venv"
+>>>>>>> 7a58d55f9832b81f6586b41cfb68a57240bbae65
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name
