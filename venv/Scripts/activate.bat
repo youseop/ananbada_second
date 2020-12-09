@@ -8,7 +8,11 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
+<<<<<<< HEAD
+set "VIRTUAL_ENV=C:\Users\stkan\Desktop\pycha\anabada\venv"
+=======
 set "VIRTUAL_ENV=C:\Users\stkan\Desktop\anabada\venv"
+>>>>>>> 7a58d55f9832b81f6586b41cfb68a57240bbae65
 
 if not defined PROMPT (
     set "PROMPT=$P$G"
