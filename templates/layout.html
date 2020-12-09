@@ -29,21 +29,20 @@
             box-sizing: border-box;
         }
 
+        body {
+            -ms-overflow-style: none;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
         .card {
             cursor: pointer;
         }
     </style>
     <!-- script -->
     <script>
-        $(document).ready(function () {
-            $("#cards-box").html("");
-            if (location.pathname == '/') {
-                showItems();
-            } else if (location.pathname == '/need') {
-                // showItems();
-            }
-        });
-
         function uploadImgPreview() {
             // @breif 업로드 파일 읽기
             let fileInfo = document.getElementById("upImgFile_share").files[0];
@@ -229,7 +228,7 @@
 
 
         function makeCard(id, title, description, createdAt, imgUrl, user_nickname, user_id) {
-            let tempHtml = `<div class="card" id="${id}">
+            let tempHtml = `<div class="card mb-3" id="${id}">
                                   <div class="card-body" onclick="postModal('${id}');">
 
                                     <div>

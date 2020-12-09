@@ -255,6 +255,8 @@ def read_items():
             result[i]["distance_from_user"] = int(haversine(result[i]["coord"], user["user_coord"]) * 10) / 10
         else:
             result[i]["distance_from_user"] = ".."
+    
+    result.reverse()
     return jsonify({'result': 'success', 'items': result})
 
 
@@ -269,4 +271,4 @@ def delete_item():
 ## 서버 연결
 if __name__ == '__main__':
     print("http://localhost:5000")
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=5000, debug=False)
