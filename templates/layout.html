@@ -230,11 +230,11 @@
             function makeCard(id,title, description, createdAt, imgUrl,user_nickname, user_id) {
                 let tempHtml = `<div class="card" id="${id}">
                                   <div class="card-body" onclick="postModal('${id}');">
+
                                     <div>
                                         <a href = "/mypage/${user_id}">user: ${user_nickname}</a>
                                     </div>
                                     <h1 class="card-title">${title}</h1>
-
                                     <p class="card-text comment">${description}</p>
                                     <div>${createdAt}</div>
                                     <img src="${imgUrl}" alt="" width="100">

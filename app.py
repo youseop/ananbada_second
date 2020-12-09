@@ -81,7 +81,6 @@ def mypage(user_id):
     return render_template('profile.html', user = user, share = share, need = need, cnt_share = cnt_share,
                            cnt_need = cnt_need, check_user = check_user)
 
-
 @app.route('/login', methods=["POST"])
 def postLogin():
     user_id = request.form["userId"]
