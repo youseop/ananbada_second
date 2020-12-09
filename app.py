@@ -51,7 +51,6 @@ def getLogin():
 def search():
     url_receive = request.form['search_input']
     url_name = request.form['url_name']
-    print(url_name) #빌리기 : false, 빌려주기 : share
     if url_name == 'true':
         url_name = 'false'
     else :
@@ -59,7 +58,6 @@ def search():
     result = list(db.items.find({"$or":[{"title": {"$regex":url_receive}, "share" : url_name},{"description" : {"$regex":url_receive},"share" : url_name}]},{'imgUrl':False}))
     for i in range(len(result)):
         result[i]["_id"] = str(result[i]["_id"])
-    print(result)
     return jsonify({'result': 'success', 'items': result})
 
 
@@ -74,8 +72,6 @@ def mypage(user_id):
     need = list(db.items.find({"user_id":user_id, "share":'false'}))	    
     if user_item == user_now :
         check_user = True
-    print(check_user, user_item, user_now)
-    print(user_now, user_id)
     user = db.Users.find_one({'user_id':user_item})
     share= list(db.items.find({"user_id":user_item, "share":'true'}))
     need = list(db.items.find({"user_id":user_item, "share":'false'}))
@@ -224,9 +220,10 @@ def post_item():
 def post_comment():
     user = session.get('user')
     id_receive = request.form['id_received']
-
+    now = datetime.datetime.now()
+    nowDate = now.strftime('%m-%d %H:%M')
     comment_receive = request.form['comment']
-    createdAt_receive = request.form['createdAt']
+    createdAt_receive = nowDate
 
     comment = {
         'post_id':id_receive,
@@ -238,7 +235,6 @@ def post_comment():
 
 
     db.items.update({ "_id" : ObjectId(id_receive) },{ "$push": { "comments" : str(comment["_id"])}})
-    print("업데이트 됨")
     return jsonify({'result': 'success'})
 
 
@@ -273,4 +269,4 @@ def delete_item():
 ## 서버 연결
 if __name__ == '__main__':
     print("http://localhost:5000")
-    app.run('0.0.0.0', port=4000, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)
