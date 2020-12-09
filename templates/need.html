@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!-- <div id="cards-box" class="card-columns">
+  <div class="card">
+    item
+  </div>
+</div> -->
+
+<div id="need_modal">
+{% for item in get_items%}
+<div class="card" id="{{item['_id']}}">
+  <div class="card-body" onclick="postModal('{{item['_id']}}');">
+    <div>user: {{item['user_nickname']}}</div>
+    <h1 class="card-title">{{item['title']}}</h1>
+    <p class="card-text comment">{{item['description']}}</p>
+    <div>{{item['createdAt']}}</div>
+    <img src="{{item['imgUrl']}}" alt="" width="100">
+    <a href="#" onclick="deleteArticle('{{item['_id']}}');">
+      삭제
+    </a>
+  </div>
+</div>
+{% endfor %}
+</div>
+<script>
+    $(document).ready(function(){
+        console.log("do")
+        shareToggle('btn-need', 'btn-share', 'register-button-box', true);
+    })
+</script>
+{% endblock %}
