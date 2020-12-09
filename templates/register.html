@@ -15,11 +15,15 @@
               <label for="item-description_share">내용</label>
               <textarea id="item-description_share" class="form-control" rows="2" name="description" required></textarea>
           </div>
+
           <div>
-            <input type="file" id="upImgFile_share" onChange="uploadImgPreview();" accept="image/*" name="imgUrl">
+            <input type="file" id="upImgFile_share" onChange="uploadImgPreview();" accept="image/*" name="imgUrl_sub">
             <img id="thumbnailImg_share" src="" style="border-radius: 20px; height: 100px; width:100px">
-            <div id="thumbnailUrl_share" style="width:10px;">url</div>
+            <!-- <div id="thumbnailUrl_share" style="width:10px;">url</div> -->
+            <input id="item_imgUrl" class="form-control" placeholder="img url _ don't touch" name="imgUrl" required>
+
           </div>
+
           <div class="col-12">
               <button onclick="findAddress(event)">주소 찾기</button>
               <label for="item-Address_share" class="form-label">주소</label>
