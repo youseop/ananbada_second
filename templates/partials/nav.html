@@ -54,8 +54,6 @@
         <input type="text" style="width:400px;" class="bg-light border-0 small" id="searchBar" placeholder=" 검색하세요" aria-label="Search" aria-describedby="basic-addon2">
 =======
 
-    <a href="/need" class="button_title">주세요</a>
-    <a href="/" class="button_title">여기요</a>
 
     <div class = 'input-group'>
         <input type="text" style="width:500px;" class="bg-light border-0 small" id="searchBar" placeholder=" 검색하세요" aria-label="Search" aria-describedby="basic-addon2">
@@ -99,6 +97,7 @@
     function search(){
         const search_input= $("#searchBar").val()
 
+<<<<<<< HEAD
         let isShare = 'true'
         if(location.pathname == '/need')
             isShare = 'false'
@@ -107,10 +106,13 @@
 =======
         $("#need_modal").empty();
 >>>>>>> f7ad3cf700f25867518095d01253a56bc038a1ef
+=======
+        $("#cards-box").empty();
+>>>>>>> df266e2dab8f00bd08d064d963b6c39540696101
         $.ajax({
             url: "/search",
             type: "POST",
-            data: {search_input : search_input, url_name : isShare},
+            data: {search_input : search_input, url_name :  $("#shareOrNeed").val()},
             success: function(response){
                if (response["result"] == "success") {
                    let items = response['items']

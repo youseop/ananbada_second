@@ -1,11 +1,15 @@
 <style type="text/css">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> df266e2dab8f00bd08d064d963b6c39540696101
             * {
                 font-family: 'Poor Story', cursive;
             }
             .navbar{
             box-shadow: 0px 8px 8px -6px rgba(0,0,0,.5);
             }
+<<<<<<< HEAD
 
             .comment {
                 color: blue;
@@ -54,60 +58,84 @@
     .navbar{
     box-shadow: 0px 8px 8px -6px rgba(0,0,0,.5);
     }
+=======
+>>>>>>> df266e2dab8f00bd08d064d963b6c39540696101
 
-    .comment {
-        color: blue;
-        font-weight: bold;
-    }
-    .logo{
-        margin : auto 150px auto 10px;
+            .comment {
+                color: blue;
+                font-weight: bold;
+            }
+            .logo{
+                margin : auto 150px auto 10px;
 
-    }
-    .card{
-        margin : 30px;
-        padding : 10px;
-        width : 400px;
-    }
-    #profile_need{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-width: 300px;
-        margin-right: 200px;
-    }
-    #profile_share{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-width: 300px;
-        margin-left: 200px;
-    }
-    .mytitle{
-        padding-top:80px
-    }
-    .small_title {
-        padding: 10px;
-        color : blue;
+            }
+            .card{
+                margin : 30px;
+                padding : 10px;
+                width : 400px;
+            }
+            #profile_need{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-width: 300px;
+                margin-right: 200px;
+            }
+            #profile_share{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-width: 300px;
+                margin-left: 200px;
+            }
+            .mytitle{
+                padding-top:80px
+            }
+            .small_title {
+                padding: 10px;
+                color : blue;
 
-    }
-    .my-hr1{
-        margin-bottom: 30px;
-        margin-top :100px;
-        border-color : lightgray;
-        width : 50%;
-        border-width: 1.5px;
+            }
+            .my-hr1{
+                margin-bottom: 30px;
+                margin-top :100px;
+                border-color : lightgray;
+                width : 50%;
+                border-width: 1.5px;
 
+<<<<<<< HEAD
     }
 .look_deeply{
         wide : 100%;
         text-align: right;
     }
 >>>>>>> f7ad3cf700f25867518095d01253a56bc038a1ef
+=======
+            }
+    .look_deeply{
+                wide : 100%;
+                text-align: right;
+            }
+>>>>>>> df266e2dab8f00bd08d064d963b6c39540696101
 
+.wrap{
+                margin : 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+    }
+.profile_container{
+                margin-top: 20px;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
 </style>
 
 {% extends 'layout.html' %}
 {% block content %}
+<<<<<<< HEAD
 <<<<<<< HEAD
     <div class = 'wrap'>
         <div class = 'mytitle'>
@@ -210,52 +238,104 @@
                             <button class="btn btn-primary">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+=======
+    <div class = 'wrap'>
+        <div class = 'mytitle'>
+            <h1>{{ user["user_nickname"]}} 님의 장터입니다.</h1>
         </div>
-    </div>
-    <div id = 'profile_need'>
-        <div class = 'text-primary'><h1>주세요</h1></div>
-        <p>필요한 물건들이 표시 됩니다.</p>
-        <div>
-            {% for i in need %}
-                <div class="card" id=i['title']>
-                {%if check_user %}
-                <div align = 'right'>
-                        <a href="#" class = 'look_deeply' onclick="deleteArticle('{{i['_id']}}')">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                        </svg>
-                        </a>
-                    </div>
-                {% else %}
-                {% endif %}
-                <div class="card-body">
-                    <h1 class="card-title">{{i['title']}}</h1>
-                    <p>작성자 : {{i['user_id']}}</p>
-                    <p class="card-text comment">{{i['description']}}</p>
-                    <div>{{i['createdAt']}}</div>
-                    <div>
-                        <img src="{{i['imgUrl']}}" alt="" width="100">
-                    </div>
-                   <div class = 'look_deeply' onclick="postModal('{{i['_id']}}')">
-                            <button class="btn btn-primary">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
+        <p>
+            {{user['id']}}
+        {{user['user_nickname']}} 님은 현재까지
+            <span class = 'text-primary' >{{cnt_share}}</span>
+            개의 물건을 나눔했어요. 그리고
+            <span class = 'text-primary'>{{cnt_need}}</span>
+            개의 나눔이 필요해요
+        </p>
+        <hr class = 'my-hr1'>
+        <div class="profile_container">
+            <div id = 'need_modal'></div>
+            <div id = 'profile_share'>
+                <div class = 'text-primary' ><h1>여기요</h1></div>
+                <p>나눔한 물건들이 표시 됩니다.</p>
+                <div>
+                    {% for i in share %}
+                        <div class="card" id=i['title']>
+                        {%if check_user %}
+                            <div align = 'right'>
+                                <a href="#" class = 'look_deeply' onclick="deleteArticle('{{i['_id']}}')">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                                </a>
+                            </div>
+                        {% else %}
+                        {% endif %}
+                        <div class="card-body">
+                            <h1 class="card-title">{{i['title']}}</h1>
+                            <p>작성자 : {{i['user_id']}}</p>
+                            <p class="card-text comment">{{i['description']}}</p>
+                            <div>{{i['createdAt']}}</div>
+                                <div>
+                                    <img src="{{i['imgUrl']}}" alt="" width="100">
+                                </div>
+                                <div class = 'look_deeply' onclick="postModal('{{i['_id']}}')">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+>>>>>>> df266e2dab8f00bd08d064d963b6c39540696101
                         </div>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
-        </div>
+            <div id = 'profile_need'>
+                <div class = 'text-primary'><h1>주세요</h1></div>
+                <p>필요한 물건들이 표시 됩니다.</p>
+                <div>
+                    {% for i in need %}
+                        <div class="card" id=i['title']>
+                        {%if check_user %}
+                        <div align = 'right'>
+                                <a href="#" class = 'look_deeply' onclick="deleteArticle('{{i['_id']}}')">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                                </a>
+                            </div>
+                        {% else %}
+                        {% endif %}
+                        <div class="card-body">
+                            <h1 class="card-title">{{i['title']}}</h1>
+                            <p>작성자 : {{i['user_id']}}</p>
+                            <p class="card-text comment">{{i['description']}}</p>
+                            <div>{{i['createdAt']}}</div>
+                            <div>
+                                <img src="{{i['imgUrl']}}" alt="" width="100">
+                            </div>
+                           <div class = 'look_deeply' onclick="postModal('{{i['_id']}}')">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
     </div>
-</div>
 
 
 
 
 
 {% endblock %}
+<<<<<<< HEAD
 >>>>>>> f7ad3cf700f25867518095d01253a56bc038a1ef
+=======
+
+
+
+>>>>>>> df266e2dab8f00bd08d064d963b6c39540696101
