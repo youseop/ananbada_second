@@ -61,15 +61,7 @@ def search():
 
 @app.route('/mypage/<user_id>')
 def mypage(user_id):
-<<<<<<< HEAD
-    user_id = user_id
-    user = db.Users.find_one({'user_id':user_id})
-    share= list(db.items.find({"user_id":user_id, "share":'true'}))
-    need = list(db.items.find({"user_id":user_id, "share":'false'}))
-    cnt_share, cnt_need = len(share), len(need)
-    return render_template('profile.html', user = user, share = share, need = need, cnt_share = cnt_share,
-                           cnt_need = cnt_need)
-=======
+
     user_item = user_id #마이페이지 조회 대상, 게시글 작성자
     user = db.Users.find_one({'user_id':user_id})	    
     user_now = session.get('user')['user_id']
@@ -88,7 +80,6 @@ def mypage(user_id):
 
     return render_template('profile.html', user = user, share = share, need = need, cnt_share = cnt_share,
                            cnt_need = cnt_need, check_user = check_user)
->>>>>>> f7ad3cf700f25867518095d01253a56bc038a1ef
 
 
 @app.route('/login', methods=["POST"])

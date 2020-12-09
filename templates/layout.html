@@ -47,24 +47,14 @@
 
             function uploadImgPreview() {
                 // @breif 업로드 파일 읽기
-                let fineInfo = "";
-                if ($("#shareYes").css("display") == "block") {
-                    fileInfo = document.getElementById("upImgFile_shareYES").files[0];
-                } else{
-                    fileInfo = document.getElementById("upImgFile_shareNO").files[0];
-                }
+                let fileInfo = document.getElementById("upImgFile_share").files[0];
+                
                 let reader = new FileReader();
                 // @details readAsDataURL( )을 통해 파일을 읽어 들일때 onload가 실행
                 reader.onload = function() {
                 // @details 파일의 URL을 Base64 형태로 가져온다.
-                if ($("#shareYes").css("display") == "block") {
-                    document.getElementById("thumbnailImg_shareYES").src = reader.result;
-                    document.getElementById("thumbnailUrl_shareYES").innerText = reader.result;
-                } else{
-                    document.getElementById("thumbnailImg_shareNO").src = reader.result;
-                    document.getElementById("thumbnailUrl_shareNO").innerText = reader.result;
-                }
-
+                document.getElementById("thumbnailImg_share").src = reader.result;
+                document.getElementById("thumbnailUrl_share").innerText = reader.result;
                 
                 };
                 if( fileInfo ) {
@@ -240,16 +230,11 @@
             function makeCard(id,title, description, createdAt, imgUrl,user_nickname, user_id) {
                 let tempHtml = `<div class="card" id="${id}">
                                   <div class="card-body" onclick="postModal('${id}');">
-<<<<<<< HEAD
-                                    <div>user: ${user_nickname}</div>
-                                    <h1 class="card-title">${user_nickname}</h1>
-=======
                                     <div>
                                         <a href = "/mypage/${user_id}">user: ${user_nickname}</a>
                                     </div>
                                     <h1 class="card-title">${title}</h1>
 
->>>>>>> df266e2dab8f00bd08d064d963b6c39540696101
                                     <p class="card-text comment">${description}</p>
                                     <div>${createdAt}</div>
                                     <img src="${imgUrl}" alt="" width="100">
