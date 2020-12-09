@@ -129,7 +129,9 @@
                                 items[i]["description"], 
                                 items[i]['createdAt'],
                                 items[i]['imgUrl'],
-                                items[i]['user_nickname']);
+                                items[i]['user_nickname'],
+                                items[i]['user_id']
+                                );
                         }
                     }
                 })  
@@ -235,17 +237,17 @@
             }
 
 
-            function makeCard(id,title, description, createdAt, imgUrl,user_nickname) {
+            function makeCard(id,title, description, createdAt, imgUrl,user_nickname, user_id) {
                 let tempHtml = `<div class="card" id="${id}">
                                   <div class="card-body" onclick="postModal('${id}');">
-                                    <div>user: ${user_nickname}</div>
+                                    <div>
+                                        <a href = "/mypage/${user_id}">user: ${user_nickname}</a>
+                                    </div>
                                     <h1 class="card-title">${user_nickname}</h1>
                                     <p class="card-text comment">${description}</p>
                                     <div>${createdAt}</div>
                                     <img src="${imgUrl}" alt="" width="100">
-                                    <a href="#" onclick="deleteArticle(${id});">
-                                      삭제
-                                    </a>
+
                                   </div>
                                 </div>`;
                 $("#cards-box").append(tempHtml);

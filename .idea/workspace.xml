@@ -21,7 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7e2d8be7-ef40-4e3c-b23e-90bdd9f8a8be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/nav.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +53,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="4a416b58-61b3-4e62-a6d4-eb6d3a2a4ee0" />
+  <component name="JupyterTrust" id="7f4e484e-d075-4f73-8c20-fd7bd73690db" />
   <component name="ProjectId" id="1lM3HJUqQNzK4P63MOpDYDweFXp" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -63,7 +66,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pycha/authentication/today_menu_app.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -80,9 +83,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="/Applications/Python 3.9/IDLE.app/Contents/MacOS/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -135,6 +138,7 @@
       <workItem from="1607393103034" duration="919000" />
       <workItem from="1607394061720" duration="37390000" />
       <workItem from="1607440901105" duration="17154000" />
+      <workItem from="1607516356637" duration="1605000" />
     </task>
     <servers />
   </component>
@@ -158,22 +162,26 @@
       <screen x="-1920" y="6" width="1920" height="1080" />
     </state>
     <state x="-1180" y="301" key="FileChooserDialogImpl/0.0.1366.768/-1920.6.1920.1080@-1920.6.1920.1080" timestamp="1607422982608" />
-    <state width="1877" height="191" key="GridCell.Tab.0.bottom" timestamp="1607491285421">
-      <screen x="-1920" y="6" width="1920" height="1080" />
+    <state width="1836" height="273" key="GridCell.Tab.0.bottom" timestamp="1607516410326">
+      <screen x="-372" y="-1057" width="1920" height="1057" />
     </state>
     <state width="1877" height="191" key="GridCell.Tab.0.bottom/0.0.1366.768/-1920.6.1920.1080@-1920.6.1920.1080" timestamp="1607491285421" />
-    <state width="1877" height="191" key="GridCell.Tab.0.center" timestamp="1607491285420">
-      <screen x="-1920" y="6" width="1920" height="1080" />
+    <state width="1836" height="273" key="GridCell.Tab.0.bottom/0.23.1440.825/-372.-1057.1920.1057@-372.-1057.1920.1057" timestamp="1607516410326" />
+    <state width="1836" height="273" key="GridCell.Tab.0.center" timestamp="1607516410325">
+      <screen x="-372" y="-1057" width="1920" height="1057" />
     </state>
     <state width="1877" height="191" key="GridCell.Tab.0.center/0.0.1366.768/-1920.6.1920.1080@-1920.6.1920.1080" timestamp="1607491285420" />
-    <state width="1877" height="191" key="GridCell.Tab.0.left" timestamp="1607491285420">
-      <screen x="-1920" y="6" width="1920" height="1080" />
+    <state width="1836" height="273" key="GridCell.Tab.0.center/0.23.1440.825/-372.-1057.1920.1057@-372.-1057.1920.1057" timestamp="1607516410325" />
+    <state width="1836" height="273" key="GridCell.Tab.0.left" timestamp="1607516410324">
+      <screen x="-372" y="-1057" width="1920" height="1057" />
     </state>
     <state width="1877" height="191" key="GridCell.Tab.0.left/0.0.1366.768/-1920.6.1920.1080@-1920.6.1920.1080" timestamp="1607491285420" />
-    <state width="1877" height="191" key="GridCell.Tab.0.right" timestamp="1607491285420">
-      <screen x="-1920" y="6" width="1920" height="1080" />
+    <state width="1836" height="273" key="GridCell.Tab.0.left/0.23.1440.825/-372.-1057.1920.1057@-372.-1057.1920.1057" timestamp="1607516410324" />
+    <state width="1836" height="273" key="GridCell.Tab.0.right" timestamp="1607516410325">
+      <screen x="-372" y="-1057" width="1920" height="1057" />
     </state>
     <state width="1877" height="191" key="GridCell.Tab.0.right/0.0.1366.768/-1920.6.1920.1080@-1920.6.1920.1080" timestamp="1607491285420" />
+    <state width="1836" height="273" key="GridCell.Tab.0.right/0.23.1440.825/-372.-1057.1920.1057@-372.-1057.1920.1057" timestamp="1607516410325" />
     <state x="328" y="57" key="SettingsEditor" timestamp="1607442459126">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -185,6 +193,7 @@
     <state x="-1297" y="246" width="672" height="678" key="search.everywhere.popup/0.0.1366.768/-1920.6.1920.1080@-1920.6.1920.1080" timestamp="1607407481400" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ananbada_second$app.coverage" NAME="app Coverage Results" MODIFIED="1607516410317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/anabada$app.coverage" NAME="app Coverage Results" MODIFIED="1607489798814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/anabada$db.coverage" NAME="db Coverage Results" MODIFIED="1607403683041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
