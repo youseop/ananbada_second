@@ -150,7 +150,7 @@
                 })
             }
 
-            function defModal(imgUrl, title, description, user_nickname, created_at, distance, post_id, comments){
+            function defModal(imgUrl, title, description, user_nickname, created_at, distance, post_id, comments,user_id){
                 $.ajax({
                     url: "api/getCommentInfo",
                     type: "post",
@@ -166,8 +166,8 @@
                             lis += commentContainer;
                         }
                         let modal = `<div class="modal" id="itemModal" style="display: block;">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
+                              <div class="modal-dialog"  margin: 0px auto;">
+                                <div class="modal-content" >
                                   <div class="modal-header">
                                     <h5 class="modal-title" id="itemTitle">${title}</h5>
                                     <button type="button" onclick="deleteModal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close">❌</button>
@@ -178,7 +178,9 @@
                                             <img src="${imgUrl}" alt="대표사진" width="280px">
                                             <div>
                                                 <h2>${description}</h2>
-                                                <h3>${user_nickname}</h3>
+                                                <div>
+                                                    <a href = "/mypage/${user_id}">user: ${user_nickname}</a>
+                                                </div>
                                                 <span>
                                                     <span>${created_at}</span>
                                                     <span>${distance}</span>
@@ -220,7 +222,8 @@
                             response.createdAt,
                             response.distance,
                             response._id,
-                            response.comments
+                            response.comments,
+                            response.user_id
                         )
                     }
                 })
