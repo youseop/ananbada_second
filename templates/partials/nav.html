@@ -1,0 +1,156 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+<style type="text/css">
+<<<<<<< HEAD
+            * {
+                font-family: 'Poor Story', cursive;
+            }
+            .navbar{
+            box-shadow: 0px 8px 8px -6px rgba(0,0,0,.5);
+            }
+
+            .comment {
+                color: blue;
+                font-weight: bold;
+            }
+            .logo{
+                margin : auto 150px auto 10px;
+
+            }
+
+=======
+* {
+    font-family: 'Poor Story', cursive;
+}
+
+.navbar{
+    box-shadow: 0px 8px 8px -6px rgba(0,0,0,.5);
+    background: white;
+}
+.logo{
+    margin-right: 100px;
+}
+.input-group{
+    display: flex;
+    justify-content: center;
+}
+.button_title{
+    min-width: 100px;
+}
+>>>>>>> f7ad3cf700f25867518095d01253a56bc038a1ef
+</style>
+
+
+
+<nav class="navbar navbar-expand-lg">
+    <a href="/">
+        <img class = 'logo' width = '200' src="https://i.imgur.com/Yf18JJE.png" >
+    </a>
+<<<<<<< HEAD
+    <a href="/need" class="card-link">주세요</a>
+    <a href="/" class="card-link">여기요</a>
+
+    <div class = 'input-group'>
+        <input type="text" style="width:400px;" class="bg-light border-0 small" id="searchBar" placeholder=" 검색하세요" aria-label="Search" aria-describedby="basic-addon2">
+=======
+
+
+    <div class = 'input-group'>
+        <input type="text" style="width:500px;" class="bg-light border-0 small" id="searchBar" placeholder=" 검색하세요" aria-label="Search" aria-describedby="basic-addon2">
+>>>>>>> f7ad3cf700f25867518095d01253a56bc038a1ef
+        <div>
+            <button class="btn btn-primary" onclick = search()>
+             <i class="fas fa-search fa-sm"></i>
+            </button>
+        </div>
+<<<<<<< HEAD
+
+
+    </div>
+
+    {% if user %}
+    <a href="/register" class="card-link">Go register</a>
+    <a href="/logout">로그아웃</a>
+    <a href="/mypage/{{user['user_id']}}"  >마이페이지</a>
+   {% else %}
+    <a href="/login" class="card-link">로그인</a>
+    <a href="/join" class="card-link">회원가입</a>
+=======
+    </div>
+
+    {% if user %}
+    <a href="/register" class="button_title">물건 등록</a>
+    <a href="/logout" class="button_title">로그아웃</a>
+    <a href="/mypage/{{user['user_id']}}" class = "button_title" >마이페이지</a>
+    {% else %}
+    <a href="/login" class="button_title">로그인</a>
+    <a href="/join" class="button_title">회원가입</a>
+>>>>>>> f7ad3cf700f25867518095d01253a56bc038a1ef
+    {% endif %}
+
+</nav>
+<script>
+
+
+
+
+    function search(){
+        const search_input= $("#searchBar").val()
+
+<<<<<<< HEAD
+        let isShare = 'true'
+        if(location.pathname == '/need')
+            isShare = 'false'
+<<<<<<< HEAD
+        $("#cards-box").empty();
+=======
+        $("#need_modal").empty();
+>>>>>>> f7ad3cf700f25867518095d01253a56bc038a1ef
+=======
+        $("#cards-box").empty();
+>>>>>>> df266e2dab8f00bd08d064d963b6c39540696101
+        $.ajax({
+            url: "/search",
+            type: "POST",
+            data: {search_input : search_input, url_name :  $("#shareOrNeed").val()},
+            success: function(response){
+               if (response["result"] == "success") {
+                   let items = response['items']
+                   for (let i = 0; i < items.length; i++) {
+                       console.log(
+                            items[i]["_id"],
+                            items[i]["title"],
+                            items[i]["description"],
+                            items[i]['createdAt']);
+
+                        searchCard_share(
+                            items[i]["_id"],
+                            items[i]["title"],
+                            items[i]["description"],
+                            items[i]['createdAt']);
+                   }
+                }
+               else {alert("서버 오류!")}
+            }
+        })
+    }
+
+    function searchCard_share(id,title, description, createdAt) {
+
+        let tempHtml = `<div class="card">
+                        <div class="card-body">
+                        <h1 class="card-title">${title}</h1>
+                        <p class="card-text comment">${description}</p>
+                        <div>${createdAt}<div>
+                        <a href="#" onclick="deleteArticle('${id}')">
+                            삭제
+                        </a>
+                        </div>
+                    </div>`;
+<<<<<<< HEAD
+        $("#cards-box").append(tempHtml);
+=======
+        $("body").append(tempHtml);
+>>>>>>> f7ad3cf700f25867518095d01253a56bc038a1ef
+    }
+</script>
