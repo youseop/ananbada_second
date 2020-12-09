@@ -224,9 +224,10 @@ def post_item():
 def post_comment():
     user = session.get('user')
     id_receive = request.form['id_received']
-
+    now = datetime.datetime.now()
+    nowDate = now.strftime('%m-%d %H:%M')
     comment_receive = request.form['comment']
-    createdAt_receive = request.form['createdAt']
+    createdAt_receive = nowDate
 
     comment = {
         'post_id':id_receive,
@@ -272,5 +273,5 @@ def delete_item():
 
 ## 서버 연결
 if __name__ == '__main__':
-    print("http://localhost:5000")
-    app.run('0.0.0.0', port=4000, debug=True)
+    print("http://localhost:4000")
+    app.run('0.0.0.0', port=5000, debug=True)
