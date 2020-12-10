@@ -246,7 +246,6 @@ def read_items():
     user = session.get('user')
     q = request.args.get("q")
     isShare = request.get_json(silent=True, cache=False, force = True)
-    print(isShare)
     if q:
         result = list(db.items.find({"$or":[{"title": {"$regex":q}, "share" : isShare}, {"description" : {"$regex":q},"share" : str(isShare)}]}))
     else:

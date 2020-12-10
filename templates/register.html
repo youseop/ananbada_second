@@ -5,38 +5,40 @@
     <form action="/item" method="post" id="post-box" class="form-post p-3 w-50 mx-auto">
         {% include "partials/shareOrNot.html" %}
         <div id="share">
-          <input type="text" id="shareOrNeed" name="share" style="display: none">
-          <h1 id="register-title">빌려주세요!</h1>
-          <div class="form-group">
-              <label for="item_title_share">제목</label>
-              <input id="item_title_share" class="form-control" placeholder="" name="title" required>
-          </div>
-          <div class="form-group">
-              <label for="item-description_share">내용</label>
-              <textarea id="item-description_share" class="form-control" rows="2" name="description" required></textarea>
-          </div>
+            <input type="text" id="shareOrNeed" name="share" style="display: none">
+            <h1 id="register-title">빌려주세요!</h1>
+            <div class="form-group">
+                <label for="item_title_share">제목</label>
+                <input id="item_title_share" class="form-control" placeholder="" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="item-description_share">내용</label>
+                <textarea id="item-description_share" class="form-control" rows="2" name="description"
+                    required></textarea>
+            </div>
 
-          <div>
-            <input type="file" id="upImgFile_share" onChange="uploadImgPreview();" accept="image/*" name="imgUrl_sub">
-            <img id="thumbnailImg_share" src="" style="border-radius: 20px; height: 100px; width:100px">
-            <!-- <div id="thumbnailUrl_share" style="width:10px;">url</div> -->
-            <input id="item_imgUrl" class="form-control" placeholder="img url _ don't touch" name="imgUrl" required>
+            <div>
+                <input type="file" id="upImgFile_share" onChange="uploadImgPreview();" accept="image/*"
+                    name="imgUrl_sub">
+                <img id="thumbnailImg_share" src="" style="border-radius: 20px; height: 100px; width:100px">
+                <!-- <div id="thumbnailUrl_share" style="width:10px;">url</div> -->
+                <input id="item_imgUrl" class="form-control" placeholder="img url _ don't touch" name="imgUrl"
+                    style="display: none;" required>
 
-          </div>
+            </div>
 
-          <div class="col-12">
-              <button onclick="findAddress(event)">주소 찾기</button>
-              <label for="item-Address_share" class="form-label">주소</label>
-              <input type="text" class="form-control" id="item-Address_share" value = "{{ user["user_address"] }}" name="itemAddress" readonly>
-          </div>
+            <div class="col-12" style="padding:0px !important; ">
+                <button class="mt-3" onclick="findAddress(evet)">주소 찾기</button>
+                <input type="text" class="form-control mt-2" id="item-Address_share" value="{{ user["user_address"] }}"
+                    name="itemAddress" readonly>
+            </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="게시글 업로드">
+        <input type="submit" class="btn btn-primary mt-4" value="게시글 업로드">
     </form>
 </div>
 <script>
-$(document).ready(function(){
-    console.log("do")
-    shareToggle('btn-need', 'btn-share', 'register-button-box', false);
+    $(document).ready(function () {
+        shareToggle('btn-need', 'btn-share', 'register-button-box', false);
     })
 </script>
 {% endblock %}

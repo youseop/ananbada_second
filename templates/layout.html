@@ -75,6 +75,43 @@
             flex-direction: column;
             align-self: flex-end;
         }
+
+        .bar {
+            height: 30px;
+            width: 10px;
+            border-radius: 5px;
+            background-color: #ff6c4c;
+            display: inline-block;
+            margin-right: 12px;
+            animation: loading alternate ease-in-out 1s infinite;
+        }
+
+        .bar:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .bar:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .bar:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .bar:nth-child(5) {
+            animation-delay: 0.8s;
+            margin-right: 0px;
+        }
+
+        @keyframes loading {
+            from {
+                transform: scaleY(1);
+            }
+
+            to {
+                transform: scaleY(2.0);
+            }
+        }
     </style>
     <!-- script -->
     <script>
@@ -138,7 +175,7 @@
                 is_share = 0;
             }
             $(`#${another_id}`).css("transform", `none`);
-            $(`#${box_id}`).css("transform", `translate(${(is_share - 0.5) * 200}px, -25px`);
+            $(`#${box_id}`).css("transform", `translate(${(is_share - 0.63) * 200}px, -25px`);
             $(`#${box_id}`).css("transition", "all ease 1s");
             $(`#${box_id}`).css("display", `block`);
             if (show) {
@@ -147,6 +184,7 @@
         }
 
         function showItems(isShare) {
+            $("#animation-container").css("display", "block")
             isShare = isShare ? 'true' : 'false';
             const q = getQuery();
             $("#cards-box").empty();
@@ -169,6 +207,7 @@
                             items[i]['user_id']
                         );
                     }
+                    $("#animation-container").css("display", "none")
                 }
             })
         }
