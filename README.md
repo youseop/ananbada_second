@@ -2,7 +2,12 @@
 
 first project in Jungle with 홍지, 민규
 
-## Sharing service platform based on the distance between user
+## Sharing platform based on the distance between user
+
+<img src="https://i.imgur.com/fYKBi1i.jpg" width="90%">
+
+There are many people who wanna rent something.
+That's why we made the sharing platform.
 
 ### page url : http://wakgoodie.shop/
 
