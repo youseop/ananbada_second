@@ -36,9 +36,44 @@
         ::-webkit-scrollbar {
             display: none;
         }
-
-        .card {
+        .posting__wrap{
+            background-color: white;
+            margin: 20px;
+            min-height: 200px;
+        }
+        .card__body{
             cursor: pointer;
+            width:100%;
+            min-height: 200px;
+            border:8px solid rgb(226, 226, 226);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            
+        }
+        .posting__text{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            min-width: 40%;
+            padding:10px;
+        }
+        .posting__title{
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: bolder;
+        }
+        .posting__img{
+            width: 200px;
+            border-radius: 10px;
+        }
+        .posting__etc{
+            display: flex;
+            flex-direction: column;
+            align-self: flex-end;
         }
     </style>
     <!-- script -->
@@ -241,16 +276,20 @@
 
 
         function makeCard(id, title, description, createdAt, imgUrl, user_nickname, user_id) {
-            let tempHtml = `<div class="card mb-3" id="${id}">
-                                  <div class="card-body" onclick="postModal('${id}');">
+            let tempHtml = `<div class="posting__wrap" id="${id}">
+                                  <div class="card__body" onclick="postModal('${id}');">
 
-                                    <div>
+                                    <img src="${imgUrl}" alt="" class="posting__img">
+                                    <div class="posting__text">
+                                        <div class="posting__title">${title}</div>
+                                        <p class="card-text comment">${description}</p>
+                                    </div>
+                                    <div class="posting__etc">
+                                    <div class="posting__user">
                                         <a href = "/mypage/${user_id}">user: ${user_nickname}</a>
                                     </div>
-                                    <h1 class="card-title">${title}</h1>
-                                    <p class="card-text comment">${description}</p>
                                     <div>${createdAt}</div>
-                                    <img src="${imgUrl}" alt="" width="100">
+                                    </div>
 
                                   </div>
                                 </div>`;
