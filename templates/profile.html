@@ -82,11 +82,11 @@
 {% block content %}
 <div class='wrap'>
     <div class='mytitle'>
-        <h1>{{ user["user_nickname"]}} 님의 장터입니다.</h1>
+        <h1>{{ writer["user_nickname"]}} 님의 장터입니다.</h1>
     </div>
     <p>
-        {{user['id']}}
-        {{user['user_nickname']}} 님은 현재까지
+        {{writer['id']}}
+        {{writer['user_nickname']}} 님은 현재까지
         <span class='text-primary'>{{cnt_share}}</span>
         개의 물건을 나눔했어요. 그리고
         <span class='text-primary'>{{cnt_need}}</span>

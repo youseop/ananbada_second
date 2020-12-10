@@ -67,11 +67,9 @@ def mypage(user_id):
 
     user_item = user_id #마이페이지 조회 대상, 게시글 작성자
     user = db.Users.find_one({'user_id':user_id})
-    user = session.get('user')	    
-    user_now = user['user_id'] if user else None
-    share= list(db.items.find({"user_id":user_id, "share":'true'}))	    
-    check_user = False
-    need = list(db.items.find({"user_id":user_id, "share":'false'}))	    
+    my_user = session.get('user')	    
+    user_now = my_user['user_id'] if my_user else None   
+    check_user = False	    
     if user_item == user_now :
         check_user = True
     user = db.Users.find_one({'user_id':user_item})
@@ -79,8 +77,8 @@ def mypage(user_id):
     need = list(db.items.find({"user_id":user_item, "share":'false'}))
 
     cnt_share, cnt_need = len(share), len(need)
-
-    return render_template('profile.html', user = user, share = share, need = need, cnt_share = cnt_share,
+    print(user)
+    return render_template('profile.html', user = my_user, writer=user, share = share, need = need, cnt_share = cnt_share,
                            cnt_need = cnt_need, check_user = check_user)
 
 @app.route('/login', methods=["POST"])

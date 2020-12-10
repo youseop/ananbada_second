@@ -5,45 +5,69 @@
         font-family: 'Poor Story', cursive;
     }
 
-    .navbar {
-        box-shadow: 0px 8px 8px -6px rgba(0, 0, 0, .5);
-        background: white;
+    .navbar__container {
+        height: 75px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
     .logo {
-        width: 20vw !important;
+        width: 220px;
+        margin-left: 11px;
     }
 
-    #searchBar {
-        height: 6vh;
-        width: 30vw;
+    .navbar__input {
+        width: 35%;
+        height: 30px;
+        margin-bottom: 10px;
 
     }
 
-    .input-group {
-        text-align: center;
+    .navbar__input>input {
+        width: 100%;
+        height: 45px;
+        background-color: rgb(241, 241, 241);
+        border-radius: 10px;
+        border: 3px solid rgb(143, 142, 142);
+
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    .button__group {
+        background-color: white;
+        min-width: 120px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
     }
 
     .button_title {
-        margin: auto;
+        margin-left: 10px;
+        color: black;
+        font-weight: bold;
     }
 
-    .button_group {
-        width: 30vw
+    .button_title:hover {
+        color: black;
+
     }
 </style>
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar__container">
     <a href="/">
         <img class='logo' src="https://i.imgur.com/Yf18JJE.png">
     </a>
-    <form action="/" class='input-group'>
-        <input type="text" class="bg-light border-0 small" id="searchBar" placeholder=" 검색하세요" aria-label="Search"
-            aria-describedby="basic-addon2" name=q>
+    <form action="/" class='navbar__input'>
+        <input type="text" id="searchBar" placeholder=" 검색하세요" aria-label="Search" aria-describedby="basic-addon2"
+            name=q>
     </form>
-    <span class='button_group'>
+    <div class='button__group'>
         {% if user %}
         <a href="/register" class="button_title">물건 등록</a>
         <a href="/logout" class="button_title">로그아웃</a>
@@ -53,5 +77,5 @@
         <a href="/join" class="button_title">회원가입</a>
 
         {% endif %}
-    </span>
+    </div>
 </nav>
