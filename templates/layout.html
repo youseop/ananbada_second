@@ -365,13 +365,11 @@
     </script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
-        function findAddress(e) {
+        function findAddress(e, id) {
             new daum.Postcode({
                 oncomplete: function (data) {
                     let address = data.roadAddress;
-                    const parent = e.target.parentNode;
-                    const inputForm = parent.childNodes[5]
-                    inputForm.value = address;
+                    $(`#${id}`).val(address);
                 }
             }).open();
 
