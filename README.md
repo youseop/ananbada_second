@@ -2,6 +2,8 @@
 
 first project in Jungle with 홍지, 민규
 
+[Blog Posting](https://youseop.github.io//2020-12-11-JUNGLE_12_11_anabada/)
+
 ## Sharing platform based on the distance between user
 
 <img src="https://i.imgur.com/fYKBi1i.jpg" width="90%">
