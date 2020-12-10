@@ -43,6 +43,17 @@
     </style>
     <!-- script -->
     <script>
+        function getQuery() {
+            const url = document.location.href;
+            let q = url.split("q=");
+            if (q.length === 2) {
+                q = q[1].split("&")[0];
+            } else {
+                q = false;
+            }
+            return q;
+        }
+
         function uploadImgPreview() {
             // @breif 업로드 파일 읽기
             let fileInfo = document.getElementById("upImgFile_share").files[0];
@@ -81,7 +92,7 @@
 
         function shareToggle(selected_id, another_id, box_id, show) {
             let is_share = 1;
-            $(`#${selected_id}`).css("transform", `scale(1.2)`);
+            $(`#${selected_id}`).css("transform", `scale(1.4)`);
             $(`#${selected_id}`).css("transition", "all ease 1s");
             if (selected_id === "btn-share") {
                 $("#shareOrNeed").val(false);
@@ -92,7 +103,7 @@
                 is_share = 0;
             }
             $(`#${another_id}`).css("transform", `none`);
-            $(`#${box_id}`).css("transform", `translate(${is_share * 10}px, -25px`);
+            $(`#${box_id}`).css("transform", `translate(${(is_share - 0.5) * 200}px, -25px`);
             $(`#${box_id}`).css("transition", "all ease 1s");
             $(`#${box_id}`).css("display", `block`);
             if (show) {
@@ -101,9 +112,11 @@
         }
 
         function showItems(isShare) {
+            isShare = isShare ? 'true' : 'false';
+            const q = getQuery();
             $("#cards-box").empty();
             $.ajax({
-                url: "/get_item",
+                url: q ? `/get_item?q=${q}` : '/get_item',
                 type: "POST",
                 contentType: "application/json",
                 dataType: "json",

@@ -16,7 +16,8 @@ SEOUL_COORD = (126.83809728245, 37.5591190960732)
 @app.route('/')
 def index():
     user = session.get("user")
-    return render_template('share.html', user=user)
+    q = request.args.get("q")
+    return render_template('share.html', user=user, q=q)
 
 
 @app.route('/register')
@@ -65,8 +66,9 @@ def search():
 def mypage(user_id):
 
     user_item = user_id #마이페이지 조회 대상, 게시글 작성자
-    user = db.Users.find_one({'user_id':user_id})	    
-    user_now = session.get('user')['user_id']
+    user = db.Users.find_one({'user_id':user_id})
+    user = session.get('user')	    
+    user_now = user['user_id'] if user else None
     share= list(db.items.find({"user_id":user_id, "share":'true'}))	    
     check_user = False
     need = list(db.items.find({"user_id":user_id, "share":'false'}))	    
@@ -242,12 +244,13 @@ def post_comment():
 @app.route('/get_item', methods=['POST'])
 def read_items():
     user = session.get('user')
+    q = request.args.get("q")
     isShare = request.get_json(silent=True, cache=False, force = True)
-    if isShare == 1:
-        result = list(db.items.find({'share': 'true'}))
+    print(isShare)
+    if q:
+        result = list(db.items.find({"$or":[{"title": {"$regex":q}, "share" : isShare}, {"description" : {"$regex":q},"share" : str(isShare)}]}))
     else:
-        result = list(db.items.find({'share': 'false'}))
-
+        result = list(db.items.find({'share': isShare}))
 
     for i in range(len(result)):
         result[i]["_id"] = str(result[i]["_id"])
@@ -271,4 +274,4 @@ def delete_item():
 ## 서버 연결
 if __name__ == '__main__':
     print("http://localhost:5000")
-    app.run('0.0.0.0', port=5000, debug=False)
+    app.run('0.0.0.0', port=5000, debug=True)

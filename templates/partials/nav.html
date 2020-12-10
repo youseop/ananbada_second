@@ -1,48 +1,45 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 <style type="text/css">
+    * {
+        font-family: 'Poor Story', cursive;
+    }
 
-* {
-    font-family: 'Poor Story', cursive;
-}
+    .navbar {
+        box-shadow: 0px 8px 8px -6px rgba(0, 0, 0, .5);
+        background: white;
+    }
 
-.navbar{
-    box-shadow: 0px 8px 8px -6px rgba(0,0,0,.5);
-    background: white;
-}
-.logo{
-    margin-right: 100px;
-}
-.input-group{
-    display: flex;
-    justify-content: center;
-}
-.button_title{
-    min-width: 100px;
-}
+    .logo {
+        margin-right: 100px;
+    }
+
+    .input-group {
+        display: flex;
+        justify-content: center;
+    }
+
+    .button_title {
+        min-width: 100px;
+    }
 </style>
 
 <nav class="navbar navbar-expand-lg">
     <a href="/">
-        <img class = 'logo' width = '200' src="https://i.imgur.com/Yf18JJE.png" >
+        <img class='logo' width='200' src="https://i.imgur.com/Yf18JJE.png">
     </a>
 
 
 
-    <div class = 'input-group'>
-        <input type="text" style="width:500px;" class="bg-light border-0 small" id="searchBar" placeholder=" 검색하세요" aria-label="Search" aria-describedby="basic-addon2">
-        <div>
-            <button class="btn btn-primary" onclick = search()>
-             <i class="fas fa-search fa-sm"></i>
-            </button>
-        </div>
-
-    </div>
+    <form action="/" class='input-group'>
+        <input type="text" style="width:500px;" class="bg-light border-0 small" id="searchBar" placeholder=" 검색하세요"
+            aria-label="Search" aria-describedby="basic-addon2" name=q>
+    </form>
 
     {% if user %}
     <a href="/register" class="button_title">물건 등록</a>
     <a href="/logout" class="button_title">로그아웃</a>
-    <a href="/mypage/{{user['user_id']}}" class = "button_title" >마이페이지</a>
+    <a href="/mypage/{{user['user_id']}}" class="button_title">마이페이지</a>
     {% else %}
     <a href="/login" class="button_title">로그인</a>
     <a href="/join" class="button_title">회원가입</a>
@@ -50,53 +47,3 @@
     {% endif %}
 
 </nav>
-<script>
-
-    function search(){
-        const search_input= $("#searchBar").val()
-
-        let isShare = 'true'
-        $("#cards-box").empty();
-        $.ajax({
-            url: "/search",
-            type: "POST",
-            data: {search_input : search_input, url_name :  $("#shareOrNeed").val()},
-            success: function(response){
-               if (response["result"] == "success") {
-                   let items = response['items']
-                   for (let i = 0; i < items.length; i++) {
-                       console.log(
-                            items[i]["_id"],
-                            items[i]["title"],
-                            items[i]["description"],
-                            items[i]['createdAt']);
-
-                        searchCard_share(
-                            items[i]["_id"],
-                            items[i]["title"],
-                            items[i]["description"],
-                            items[i]['createdAt']);
-                   }
-                }
-               else {alert("서버 오류!")}
-            }
-        })
-    }
-
-    function searchCard_share(id,title, description, createdAt) {
-
-        let tempHtml = `<div class="card">
-                        <div class="card-body">
-                        <h1 class="card-title">${title}</h1>
-                        <p class="card-text comment">${description}</p>
-                        <div>${createdAt}<div>
-                        <a href="#" onclick="deleteArticle('${id}')">
-                            삭제
-                        </a>
-                        </div>
-                    </div>`;
-
-        $("#cards-box").append(tempHtml);
-        // $("body").append(tempHtml);
-    }
-</script>
