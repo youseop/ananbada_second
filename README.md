@@ -42,4 +42,6 @@ WEB Project by using
 ### Unsolved Issues
 
 - Real time CRUD
+- Delete comment 
+- Sold out button
 
