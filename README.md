@@ -33,3 +33,8 @@ WEB Project by using
 - User can change their current location
 
 <img src="https://i.imgur.com/0k1cHNA.jpg" width="90%">
+
+### Unsolved Issues
+
+- Real time CRUD
+
