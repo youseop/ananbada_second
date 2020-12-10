@@ -76,6 +76,10 @@
         align-items: flex-start;
         justify-content: flex-start;
     }
+    #highlight{
+        font-weight: bolder;
+        font-size: 30px;
+    }
 </style>
 
 {% extends 'layout.html' %}
@@ -87,10 +91,10 @@
     <p>
         {{writer['id']}}
         {{writer['user_nickname']}} 님은 현재까지
-        <span class='text-primary'>{{cnt_share}}</span>
-        개의 물건을 나눔했어요. 그리고
-        <span class='text-primary'>{{cnt_need}}</span>
-        개의 나눔이 필요해요
+        <span class='text-primary' id="highlight">{{cnt_share}}</span>
+        개의 물건을 나눔 중이예요. 그리고
+        <span class='text-primary' id="highlight">{{cnt_need}}</span>
+        개의 나눔이 필요해요.
     </p>
     <hr class='my-hr1'>
     <div class="profile_container">
