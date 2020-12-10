@@ -36,41 +36,47 @@
         ::-webkit-scrollbar {
             display: none;
         }
-        .posting__wrap{
+
+        .posting__wrap {
             background-color: white;
             margin: 20px;
             min-height: 200px;
         }
-        .card__body{
+
+        .card__body {
             cursor: pointer;
-            width:100%;
+            width: 100%;
             min-height: 200px;
-            border:8px solid rgb(226, 226, 226);
+            border: 8px solid rgb(226, 226, 226);
             border-radius: 20px;
             padding: 20px;
             display: flex;
             justify-content: space-between;
-            
+
         }
-        .posting__text{
+
+        .posting__text {
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
             min-width: 40%;
-            padding:10px;
+            padding: 10px;
         }
-        .posting__title{
+
+        .posting__title {
             font-size: 1.8rem;
             margin-bottom: 20px;
             font-weight: bolder;
         }
-        .posting__img{
+
+        .posting__img {
             width: 200px;
             border-radius: 10px;
         }
-        .posting__etc{
+
+        .posting__etc {
             display: flex;
             flex-direction: column;
             align-self: flex-end;
@@ -272,7 +278,9 @@
                                             </div>
                                         </div>
                                         <div class="col">
+                                            {% if user %}
                                             <input id="input_${post_id}" type="text" name="query" >
+                                            {% endif %}
                                             <div id="comment-list_${post_id}" style="overflow: scroll; max-height: 70vh;">${lis}</div>
                                         </div>
                                     </div>

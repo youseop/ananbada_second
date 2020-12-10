@@ -4,48 +4,56 @@
     * {
         font-family: 'Poor Story', cursive;
     }
-    .navbar__container{
+
+    .navbar__container {
         height: 75px;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-    .logo{
+
+    .logo {
         width: 220px;
         margin-left: 11px;
     }
-    .navbar__input{
+
+    .navbar__input {
         width: 35%;
         height: 30px;
         margin-bottom: 10px;
+
     }
-    .navbar__input>input{
+
+    .navbar__input>input {
         width: 100%;
         height: 45px;
         background-color: rgb(241, 241, 241);
         border-radius: 10px;
-        border:3px solid rgb(143, 142, 142);
-
+        border: 3px solid rgb(143, 142, 142);
 
     }
-    input:focus{
-        outline:none;        
+
+    input:focus {
+        outline: none;
     }
-    .button__group{
+
+    .button__group {
         background-color: white;
         min-width: 120px;
-        padding:10px;
+        padding: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-right: 10px;
     }
-    .button_title{
+
+    .button_title {
         margin-left: 10px;
         color: black;
         font-weight: bold;
     }
-    .button_title:hover{
+
+    .button_title:hover {
         color: black;
 
     }
@@ -56,18 +64,18 @@
         <img class='logo' src="https://i.imgur.com/Yf18JJE.png">
     </a>
     <form action="/" class='navbar__input'>
-        <input type="text" id="searchBar" placeholder=" 검색하세요"
-            aria-label="Search" aria-describedby="basic-addon2" name=q>
+        <input type="text" id="searchBar" placeholder=" 검색하세요" aria-label="Search" aria-describedby="basic-addon2"
+            name=q>
     </form>
-    <div class ='button__group'>
-    {% if user %}
-    <a href="/register" class="button_title">물건 등록</a>
-    <a href="/logout" class="button_title">로그아웃</a>
-    <a href="/mypage/{{user['user_id']}}" class="button_title">마이페이지</a>
-    {% else %}
-    <a href="/login" class="button_title">로그인</a>
-    <a href="/join" class="button_title">회원가입</a>
+    <div class='button__group'>
+        {% if user %}
+        <a href="/register" class="button_title">물건 등록</a>
+        <a href="/logout" class="button_title">로그아웃</a>
+        <a href="/mypage/{{user['user_id']}}" class="button_title">마이페이지</a>
+        {% else %}
+        <a href="/login" class="button_title">로그인</a>
+        <a href="/join" class="button_title">회원가입</a>
 
-    {% endif %}
+        {% endif %}
     </div>
 </nav>
