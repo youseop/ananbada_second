@@ -67,7 +67,8 @@ def mypage(user_id):
 
     user_item = user_id #마이페이지 조회 대상, 게시글 작성자
     user = db.Users.find_one({'user_id':user_id})
-    my_user = session.get('user')	    
+    my_user = session.get('user')	   
+    print(my_user) 
     user_now = my_user['user_id'] if my_user else None   
     check_user = False	    
     if user_item == user_now :
