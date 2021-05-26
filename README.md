@@ -11,7 +11,7 @@ first project in Jungle with 홍지, 민규
 There are many people who wanna rent something.
 That's why we made the sharing platform.
 
-### page url : http://wakgoodie.shop/
+### page url : http://wakgoodie.shop/ (service stopped)
 
 WEB Project by using
   - javascript
